@@ -1,0 +1,60 @@
+#+TITLE: The missing piece: saving software for reproducible research
+#+DATE: June 2015
+#+AUTHOR: Jez Cope
+#+EMAIL: j.cope@imperial.ac.uk
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE: en
+
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:t date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil prop:nil
+#+OPTIONS: stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
+#+OPTIONS: todo:t |:t
+#+STARTUP: showall
+
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 24.5.1 (Org mode 8.3beta)
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [ignorenonframetext]
+#+LATEX_HEADER:
+#+LATEX_HEADER_EXTRA:
+
+
+#+BEGIN_LaTeX
+\begin{frame}
+  \maketitle
+\end{frame}
+#+END_LaTeX
+
+* Introduction
+
+#+BEGIN_LaTeX
+\begin{frame} %===============================================================
+  \frametitle{Introduction}  
+  
+  \begin{itemize}
+  \item Blah
+  \item Blah blah
+  \end{itemize}
+  
+\end{frame}
+#+END_LaTeX
+
+* Notes                                                            :noexport:
+
+- Libraries should take an interest in software preservation
+  - Why libraries?
+    - Expertise in:
+      - Copyright & licensing
+      - Access to information
+      - Preservation
+    - Enthusiastic advocates of OA
+    - Extension of RDM role
+  - Why preserve software?
+    - Essential part of the scholarly record
+    - Required to make research reproducible/verifiable
+    - Required to interpret data
+  - What is research software?
+  - What needs to change/what can librarians do?
