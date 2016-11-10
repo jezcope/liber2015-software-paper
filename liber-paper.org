@@ -1,27 +1,16 @@
 #+TITLE: The missing piece: saving software for reproducible research
-#+DATE: June 2015
-#+AUTHOR: Jez Cope
+#+DATE: LIBER 2015
+#+MACRO: short_author Jez Cope
+#+MACRO: affiliation Imperial College London / University of Sheffield
+#+AUTHOR: {{{short_author}}}, {{{affiliation}}}
 #+EMAIL: j.cope@imperial.ac.uk
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE: en
 
-#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t c:nil creator:comment d:t date:t
-#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil prop:nil
-#+OPTIONS: stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
-#+OPTIONS: todo:t |:t
-#+STARTUP: showall
+#+INCLUDE: "front-matter.org"
 
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 24.5.1 (Org mode 8.3beta)
-#+LATEX_CLASS: beamer
-#+LATEX_CLASS_OPTIONS: [ignorenonframetext]
-#+LATEX_HEADER:
-#+LATEX_HEADER_EXTRA:
-
-
+# This is needed because we're using standard LaTeX export instead of the Beamer one
 #+BEGIN_LaTeX
 \begin{frame}
   \maketitle
@@ -32,15 +21,364 @@
 
 #+BEGIN_LaTeX
 \begin{frame} %===============================================================
-  \frametitle{Introduction}  
+  \frametitle{Overview}  
   
   \begin{itemize}
-  \item Blah
-  \item Blah blah
+  \item What is research software?
+  \item Why preserve and share it?
+  \item What does software preservation look like?
+  \item What can librarians (and libraries) do?
   \end{itemize}
   
 \end{frame}
 #+END_LaTeX
+
+- Open access policies:
+  - HEFCE REF policy in the UK
+  - Also a mandate in the US
+
+Academic researchers are under increasing pressure to work more transparently and demonstrate value for money.  Funders are under political pressure to do more for less and show that the work they fund is of short-term economic benefit.
+
+The best-known example of this trend is the drive toward open access to published research articles.  There are now strong policy drivers to
+
+
+
+* What is research software?
+
+All modern research is supported by a wide variety of software, including tools that aren't specific to research at all, so it's worth considering what we actually mean when we talk about research software.  There are two reasonable definitions here:
+
+1. Software /developed by researchers/
+2. Software /used for research/
+
+Clearly the first category is much narrower, and focuses on the work of what Baxter /et al/ (2012) refer to as the /Research Software Engineer/.
+
+Preserving this  first category, however, may be insufficient.
+
+- May be:
+  - Commercial
+  - Open Source
+  - Developed in-house
+  - Customised
+  - Used "off-the-shelf"
+
+#+BEGIN_LaTeX
+\begin{frame} %===============================================================
+  \frametitle{What is research software?}  
+
+  \tikzset{question box/.style={fill=main,text=white,rounded corners,text width=4cm,minimum height=3cm,align=center,font=\Large}}
+
+  \begin{columns}
+    
+    \begin{column}{4cm}
+      \tikz \node[question box] {Software\\ \emph{developed by researchers?}};
+    \end{column}
+    
+    \begin{column}{2cm}
+      \centering\huge
+      or
+    \end{column}
+
+    \begin{column}{4cm}
+      \tikz \node[question box] {Software\\ \emph{used for research?}};
+    \end{column}
+
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame} %===============================================================
+  \frametitle{What is research software?}  
+  
+  \begin{block}{Could include software that is:}
+    \begin{itemize}
+    \item Required to generate/interpret research data
+    \item Written and/or used by researchers during the course of their research
+    \item Discipline-specific (i.e. not easy to understand by non-specialists)
+    \item Developed in-house
+    \item Used ``off-the-shelf''
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+#+END_LaTeX
+
+* Why preserve and share software?
+
+#+BEGIN_LaTeX
+\begin{frame} %===============================================================
+  \frametitle{Why preserve and share software?}  
+#+END_LaTeX
+
+- Why preserve it?
+  - Essential part of the scholarly record
+  - Required to make research reproducible/verifiable
+  - Required to (re)interpret data
+- Why share it?
+  - Communicate ideas completely and precisely
+  - Validate results
+  - Repurpose with different data
+  - Adapt to new domains
+  
+#+BEGIN_LaTeX
+\end{frame}
+
+\begin{frame} %===============================================================
+  \frametitle{Why preserve and share software?}  
+  
+  \textbf{\emph{Better Software, Better Research}}
+  
+\end{frame}
+#+END_LaTeX
+
+* Why libraries?
+
+#+BEGIN_LaTeX
+\begin{frame}
+  \frametitle{Why libraries?}
+#+END_LaTeX
+
+- Expertise in:
+  - Copyright & licensing
+  - Access to information
+  - Preservation
+- Advocates for:
+  - Open access
+  - Novel scholarly communications
+- Extension of:
+  - Research support role in general
+  - Research data management role in particular
+
+#+BEGIN_LaTeX
+\end{frame}
+#+END_LaTeX
+
+* What does software preservation look like?
+
+Could archive:
+
+- A record of the provenance, version, use etc. of the software
+- Ready-to-use (compiled binary) version of the actual software
+- Source code of the software
+  - Maybe under an open source license
+- A complete virtual machine image
+
+#+BEGIN_LaTeX
+\begin{frame} %===============================================================
+  \frametitle{What to preserve}
+  \usetikzlibrary{shadows}
+  \usetikzlibrary{arrows.meta}
+  \usetikzlibrary{decorations.pathmorphing}
+  
+  \centering
+  \begin{tikzpicture}[scale=0.25,node font=\footnotesize]
+    \fill[fill=main,rounded corners]
+      (1,18) rectangle ++(9,4) node[pos=0.5] {Source code}
+      (15,18) rectangle ++(9,4) node[pos=0.5] {Executable}
+      foreach \x in {0,...,2} { (1+8*\x,13) rectangle ++(7,4) node[pos=0.5] {Dependency} }
+      (1,8) rectangle ++(23,4) node[pos=0.5] {Operating system}
+      (1,3) rectangle ++(23,4) node[pos=0.5] {Hardware};
+    \draw[arrows={-Triangle},decorate,decoration={bent,aspect=0.4},densely dotted]
+      (10.5,20) -- ++(4,0);
+    \draw[rounded corners,dashed,use as bounding box]
+      (0,0) rectangle ++(25,23);
+    \node[anchor=south east,font=\itshape] at (25,0) {Virtual machine image};
+    \draw[fill=white,drop shadow]
+      (-3,-1) +(8,9) |- +(0,0) |- ++(7,10) -- ++(1,-1) -- ++(-1,0) -- ++(0,1)
+      node[font=\itshape,align=center] at (1,4) {Description\\[1em](Formal or\\informal)};
+  \end{tikzpicture}
+  
+\end{frame}
+
+\begin{frame} %===============================================================
+  \frametitle{Issues}
+  \framesubtitle{General}
+  
+  \begin{itemize}
+  \item What version was used?
+    \begin{itemize}
+    \item Did the behaviour change between versions?
+    \end{itemize}
+  \item What restrictions apply?
+    \begin{itemize}
+    \item Does the license to use it expire?
+    \item Are you allowed to archive it?
+    \item Are you allowed to distribute copies?
+    \end{itemize}
+  \item What dependencies must also be installed to run it?
+    \begin{itemize}
+    \item Do only particular versions of these work?
+    \item What further dependencies do they have?
+    \end{itemize}
+  \item What operating system and hardware platform was used?
+    \begin{itemize}
+    \item Does it run elsewhere?
+    \item If so, does it produce identical results?
+    \end{itemize}
+  \end{itemize}
+  
+\end{frame}
+#+END_LaTeX
+
+** Examples
+
+#+BEGIN_LaTeX
+\begin{frame} %===============================================================
+  \frametitle{One view of software preservation}
+
+  \begin{block}{Recomputation Manifesto}
+#+END_LaTeX
+
+1. Computational experiments should be recomputable for all time
+2. Recomputation of recomputable experiments should be very easy
+3. It should be easier to make experiments recomputable than not to
+4. Tools and repositories can help recomputation become standard
+5. The only way to ensure recomputability is to provide virtual machines
+6. Runtime performance is a secondary issue
+
+See http://www.recomputation.org/manifesto/
+
+#+BEGIN_LaTeX
+  \end{block}
+\end{frame}
+#+END_LaTeX
+
+#+BEGIN_LaTeX
+\begin{frame}
+  \frametitle{Examples}
+
+  \begin{itemize}
+  \item Internet Archive (including the
+    \href{https://archive.org/details/internetarcade}{Internet
+      Arcade})
+  \item Zenodo/GitHub integration
+  \item PyRDM
+  \end{itemize}
+
+\end{frame}
+#+END_LaTeX
+
+* What can librarians do about it?
+
+** Take software seriously
+
+- Develop an institutional software sustainability policy (or sneak it into your RDM policy)
+- Bring it up when advising researchers
+  - Encourage use of a [[http://www.software.ac.uk/resources/guides/software-management-plans][software management plan]] (also [[http://www.dcc.ac.uk/blog/software-management-plan-service-prototype-live][the SMP service prototype]])
+- Build links with your IT services, especially HPC/Research Computing
+
+#+BEGIN_LaTeX
+\begin{frame}
+  \frametitle{What can we do?}
+  \framesubtitle{Advocate for software}
+  
+  \begin{itemize}
+  \item Develop an institutional policy
+  \item Bring it up when advising researchers
+  \item Encourage use of a software management plan
+  \item Build links with other teams/departments (especially HPC/Research Computing)
+  \end{itemize}
+  
+\end{frame}
+#+END_LaTeX
+
+** Learn to code
+
+- Learn to code
+  1. It helps understand what's going on even if you don't actually know enough to teach researchers
+  2. It's a valuable skill and can save loads of time
+  3. It's hugely empowering (and fun!)
+- Learn about some of the language and technologies in this area (you don't have to understand or be able to apply it)
+  - Virtualisation
+  - Distributed version control
+- Learn about projects going on in this area:
+  - [[http://www.recomputation.org/manifesto/][Recomputation Manifesto]]
+  - [[http://www.runmycode.org/][Run My Code]]
+  - [[https://www.mozillascience.org/projects/codemeta][Code as a Research Object]]
+
+#+BEGIN_LaTeX
+\begin{frame} %===============================================================
+  \frametitle{What can we do?}
+  \framesubtitle{Learn more}
+  
+  \begin{itemize}
+  \item Recognise some of the technologies
+  \item Pick up some of the language
+  \item Learn to code in the context of your own role
+  \item Ask your systems team for help
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame} %===============================================================
+  \frametitle{What can we do?}
+  \framesubtitle{Initiatives in this area}
+  
+  \begin{itemize}
+  \item \href{http://www.runmycode.org/}{Run My Code}
+  \item \href{https://www.mozillascience.org/projects/codemeta}{Code as a Research Object}
+  \item Software Carpentry (and Library Carpentry)
+  \item Software Sustainability Institute
+  \end{itemize}
+  
+\end{frame}
+#+END_LaTeX
+
+* Conclusions
+
+#+BEGIN_LaTeX
+\begin{frame} %===============================================================
+  \frametitle{Acknowledgements}  
+  
+  \begin{itemize}
+  \item Imperial College London
+  \item University of Sheffield
+  \end{itemize}
+  
+\end{frame}
+#+END_LaTeX
+
+* References
+
+#+CALL: get-bibliography(group_id="348303", coll_id="7QM4VW67", style="apa") :results drawer :exports results
+
+#+BEGIN_LaTeX
+\begin{frame}
+  \frametitle{References}
+  \tiny
+#+END_LaTeX
+
+#+RESULTS:
+:RESULTS:
+- Aruliah, D. (2014, May 28). Teaching Librarians in Montreal. Retrieved May 5, 2015, from http://software-carpentry.org/blog/2014/05/teaching-librarians-in-montreal.html
+- Baxter, R., Chue Hong, N., Gorissen, D., Hetherington, J., & Todorov, I. (2012). The Research Software Engineer. Presented at the Digital Research Conference, Oxford. Retrieved from http://dirkgorissen.com/2012/09/13/the-research-software-engineer/
+- Crouch, S., Hong, N. C., Hettrick, S., Jackson, M., Pawlik, A., Sufi, S., … Parsons, M. (2013). The Software Sustainability Institute: Changing Research Software Attitudes and Practices. /Computing in Science &amp; Engineering/, /15/ (6), 74–80. http://doi.org/10.1109/MCSE.2013.133
+- Macdonell, C. (2014, August 13). Three Bootcamps for Librarians. Retrieved May 5, 2015, from http://software-carpentry.org/blog/2014/08/bootcamps-for-librarians.html
+- Teal, T. K., Cranston, K. A., Lapp, H., White, E., Wilson, G., Ram, K., & Pawlik, A. (2015). Data Carpentry: Workshops to Increase Data Literacy for Researchers. /International Journal of Digital Curation/, /10/ (1), 135–143. http://doi.org/10.2218/ijdc.v10i1.351
+- Vandewalle, P. (2012). Code Sharing is Associated with Research Impact in Image Processing. /IEEE Computing in Science and Engineering/, /14/ (4), 42–47. Retrieved from http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6200247
+- Wilson, G. (2014). Software Carpentry: lessons learned. /F1000Research/, /3/. http://doi.org/10.12688/f1000research.3-62.v1
+:END:
+
+#+BEGIN_LaTeX
+\end{frame}
+#+END_LaTeX
+
+** Code                                                           :noexport:
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+This short snippet of code formats a Zotero collection in APA format, converting HTML ~<i>~ tags to ~org-mode /italics/~.
+
+#+NAME: get-bibliography
+#+BEGIN_SRC ruby :results output drawer
+  require 'open-uri'; require 'rexml/document'
+  url = "https://api.zotero.org/groups/#{group_id}/collections/#{coll_id}/items/top?format=bib&style=#{style}"
+  REXML::Document.new(open(url)).elements.each('//div[@class="csl-entry"]') do |entry|
+    puts '- ' + entry.children
+                .collect{|c| if c.instance_of? REXML::Text then c.value else c.to_s end}
+                .join.gsub(%r{</?i>}, '/').gsub(%r{/\(}, '/ (')
+  end
+#+END_SRC
 
 * Notes                                                            :noexport:
 
@@ -56,5 +394,34 @@
     - Essential part of the scholarly record
     - Required to make research reproducible/verifiable
     - Required to interpret data
-  - What is research software?
   - What needs to change/what can librarians do?
+    - Learn more about it (i.e. learn to code)
+    - 
+
+** Information for authors
+
+- [[http://liber.library.uu.nl/index.php/lq/about/submissions][Author guidelines, etc.]]
+- [[http://liber.library.uu.nl/index.php/lq/about/editorialPolicies][Editorial policies]]
+
+#+BEGIN_QUOTE
+*Review papers* should present the current status of a given topic. They synthesize the results from the primary literature to produce a coherent argument about a topic or a systematic description of a field. This requires critical judgments and organization of the material. Although a review paper is not about a particular project or piece of research, it should give an original perspective or new understanding of the topic. The reader of the review should gain an overview of the current debates, the main people working in the field and recent major advances. The review should conclude  with a discussion of outstanding issues and  likely future directions for research and development.  (Acknowledgement: In defining these criteria we have drawn on the criteria used by the following sources: Reviews of Modern Physics; Communication in the biological sciences; University of Texas.)
+#+END_QUOTE
+
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:t date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil prop:nil
+#+OPTIONS: stat:t tags:t tasks:t tex:t timestamp:t title:t toc:nil
+#+OPTIONS: todo:t |:t
+#+STARTUP: showall
+
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 24.5.1 (Org mode 8.3beta)
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [ignorenonframetext]
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetheme{Rochester}
+#+LATEX_HEADER: \definecolor{main}{HTML}{1475A7}
+#+LATEX_HEADER: \usecolortheme[named=main]{structure}
+#+LATEX_HEADER_EXTRA: 
+

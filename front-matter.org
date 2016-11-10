@@ -1,0 +1,15 @@
+*{{{short_author}}}* \\
+{{{affiliation}}} \\
+{{{email}}}
+
+*Abstract*
+
+Reproducibility has always been a central pillar of scientific research. The journal article is the gold standard in enabling this, describing the motivation, methods, results and conclusions of a piece of work. It is generally impossible to include the full underlying data within a paper, so authors instead make do with summaries, statistics and carefully-selected subsets. This approach makes it difficult to validate the conclusions of the paper, and to overcome this shortcoming there is increasing pressure on researchers to improve access to their underlying datasets.
+
+However, the data is only half of the story. The calculations required to generate or analyse it are often too complex to give more than a general sketch in the methods section. When another researcher tries to reproduce the analysis, they quickly discover that there are many implementation details and edge cases left out of the description. The inevitable conclusion is that it is impossible to reproduce and validate another's results without also having access to their software.
+
+Software poses new challenges for all involved with its curation and preservation. It is not sufficient to preserve only the source code: the ability to reproduce a given set of results also depends on specific versions of language tools, libraries and a full stack of infrastructure right down to the hardware. The usefulness of the code also relies on the skill of the programmer in documenting and structuring it in a logical, comprehensible fashion, for which training needs to be provided by an experienced professional. Research software is continually evolving, so it is important to link each published result to the specific iteration of the software that produced it.
+
+This paper will argue that the bespoke software written for research should be recognised as an irreplaceable part of the scholarly record, and as such needs management, curation and preservation alongside the data it is created to generate or analyse. Initiatives such as Software Carpentry (http://software-carpentry.org/) and groups such as the Software Sustainability Institute (http://software.ac.uk/) are making great progress in raising awareness of these issues and providing training. Research libraries, with their traditional responsibility for managing and preserving the scholarly "inputs" and "outputs" of their institution, have an important part to play in developing there institutions' "software collection".
+
+*Key Words:* software; research; sustainability; reproducibility; preservation
