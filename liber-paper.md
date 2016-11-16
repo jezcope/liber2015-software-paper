@@ -72,9 +72,9 @@ to specialised packages with both industrial and academic applications.
 
 The foundation of scholarly research and the scientific method
 is the scholarly record.
-[Someone] ***TODO: who the hell was it? Newton? Einstein?*** famously remarked:
+Isaac Newton famously remarked:
 
-> "If I have seen far, it is by standing on the shoulders of giants"
+> "If I have seen further, it is by standing on the shoulders of giants"
 
 Libraries and archives are the guardians of the scholarly record
 and it is tempting to treat the worth of that guardianship as self-evident.
